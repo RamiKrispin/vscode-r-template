@@ -80,16 +80,15 @@ RUN ./configure ${CONFIGURE_OPTIONS} && \
 
 RUN locale-gen en_US.UTF-8
 
-WORKDIR /root
+# WORKDIR /root
 
 RUN mkdir settings
-
 COPY packages.json install_packages.R requirements.txt install_quarto.sh ./settings/
 RUN Rscript ./settings/install_packages.R
 
 # Installing Quarto
 RUN bash ./settings/install_quarto.sh $QUARTO_VER
-COPY .Rprofile /root/
+COPY .Rprofile  ./root/
 
 # Step 5 - Set Python Environment and install radian
 RUN python3 -m venv /opt/$VENV_NAME  \
