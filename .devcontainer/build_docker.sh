@@ -2,7 +2,7 @@
 
 echo "Build the docker"
 
-docker build . -f Dockerfile \
+docker build . -f Dockerfile.base \
                --progress=plain \
                --build-arg PROJECT_NAME="R Dev Env" \
                --build-arg VENV_NAME="R_ENV" \

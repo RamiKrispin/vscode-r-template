@@ -1,17 +1,24 @@
 {
     "name": "R Dev Environment",
-    "image": "rkrispin/vscode_r_dev:0.1.0",
-    "settings": {
-        "files.associations": {
-            "*.Rmd": "rmd"
+    // "image": "rkrispin/vscode_r_dev:0.1.0",
+    "build": {
+        "dockerfile": "Dockerfile.dev",
+        "context": ".",
+        "args": {
+            "VENV_NAME": "R_ENV",
+            "R_VERSION_MAJOR": "4",
+            "R_VERSION_MINOR": "3",
+            "R_VERSION_PATCH": "1",
+            "CRAN_MIRROR": "https://cran.rstudio.com/",
+            "QUARTO_VER": "1.3.450"
         }
     },
     "customizations": {
         "vscode": {
             "extensions": [
                 // R Extensions
-                "rdebugger.r-debugger",
                 "reditorsupport.r",
+                "rdebugger.r-debugger",
                 // Documentation Extensions
                 "quarto.quarto",
                 "purocean.drawio-preview",
@@ -25,6 +32,5 @@
                 "ms-toolsai.jupyter"
             ]
         }
-    },
-    "postCreateCommand": "radian"
+    }
 }

@@ -20,3 +20,4 @@ if (interactive() && Sys.getenv("TERM_PROGRAM") == "vscode") {
 
 # Set CRAN Mirror
 options(repos = Sys.getenv("CRAN_MIRROR"))
+options(repos = "https://cran.rstudio.com/")

@@ -80,7 +80,7 @@ RUN ./configure ${CONFIGURE_OPTIONS} && \
 
 RUN locale-gen en_US.UTF-8
 
-# WORKDIR /root
+WORKDIR ~/
 
 RUN mkdir settings
 COPY packages.json install_packages.R requirements.txt install_quarto.sh ./settings/
@@ -88,15 +88,18 @@ RUN Rscript ./settings/install_packages.R
 
 # Installing Quarto
 RUN bash ./settings/install_quarto.sh $QUARTO_VER
-COPY .Rprofile  ./root/
+
 
 # Step 5 - Set Python Environment and install radian
 RUN python3 -m venv /opt/$VENV_NAME  \
     && export PATH=/opt/$VENV_NAME/bin:$PATH \
-    && echo "source /opt/$VENV_NAME/bin/activate" >> ~/.bashrc
+    && echo "source /opt/$VENV_NAME/bin/activate" >> ~/.bashrc \
+    && echo "alias r='radian'" >> ~/.bashrc
+
 
 RUN pip3 install -r ./settings/requirements.txt
 
-
+COPY init.R /root/.vscode-R/init.R
+COPY init.R /root/.vscode-server/extensions/reditorsupport.r-2.8.2/R/session/init.R
 
 
