@@ -3,5 +3,10 @@
     "r.bracketedPaste": true,
     "r.sessionWatcher": true,
     "r.plot.useHttpgd": true,
-    "r.lsp.diagnostics": false
+    "r.lsp.diagnostics": false,
+    "r.rterm.option": [
+        "--no-save",
+        "--no-restore",
+        "--r-binary=/usr/local/bin/R"
+    ]
 }
