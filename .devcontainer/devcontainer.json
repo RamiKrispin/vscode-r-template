@@ -1,16 +1,13 @@
 {
     "name": "R Dev Environment",
-    "image": "docker.io/rkrispin/vscode_r_dev:0.1.0",
-    // "build": {
-    //     "dockerfile": "Dockerfile.dev",
-    //     "context": "."
-    // },
+    "image": "docker.io/rkrispin/r-dev:${localEnv:CPU}.4.4.0",
     "customizations": {
         "vscode": {
             "extensions": [
                 // R Extensions
                 "reditorsupport.r",
                 "rdebugger.r-debugger",
+                "posit.shiny",
                 // Documentation Extensions
                 "quarto.quarto",
                 "purocean.drawio-preview",
