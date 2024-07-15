@@ -21,5 +21,6 @@
                 "ms-toolsai.jupyter"
             ]
         }
-    }
+    },
+    "postStartCommand": "until [ -f /root/.vscode-R/init.R ]; do sleep 0.1; done; radian"
 }

@@ -22,6 +22,11 @@ ENV CONFIGURE_OPTIONS="--with-cairo --with-jpeglib --enable-R-shlib --with-blas 
 # CRAN Mirror
 ARG CRAN_MIRROR=https://cran.rstudio.com/
 ENV CRAN_MIRROR=$CRAN_MIRROR
+# Radian Settings
+ENV R_PROFILE_USER="/root/.Rprofile"
+ENV TERM_PROGRAM="vscode"
+ENV VSCODE_INIT_R="R/session/init.R"
+
 # Create a directory for packages builds
 RUN mkdir pkgs
 
@@ -58,6 +63,6 @@ RUN rm pkgs/*.*
 
 
 COPY setting_files/.Rprofile root/
-RUN echo "alias r='radian --profile=~/.Rprofile'" >> ~/.bashrc
+RUN echo "alias r='radian'" >> ~/.bashrc
 
 
